@@ -1,10 +1,9 @@
 ﻿// Creator: JackO'ManyNames
 // Date: 5/1/2022
+// Lasted edited: 6/2/2022
 
-using System.Collections;
 using UnityEngine;
 using ThunderRoad;
-using System;
 
 namespace Mordeth
 {
@@ -75,6 +74,10 @@ namespace Mordeth
             }
         }
 
+        /// <summary>
+        /// If there is a creature that's been damaged, will start a timer doing damage to them
+        /// over time. If their health drops below zero, kill the creature.
+        /// </summary>
         private void Update()
         {
             if (currC != null)
@@ -91,6 +94,7 @@ namespace Mordeth
                         {
                             currC.Kill();
                             currC.ragdoll.SetState(Ragdoll.State.Destabilized, false);
+                            currC = null;
                         }
                         else
                         {
